@@ -1,0 +1,10 @@
+#momContainer {
+  width: 300px;
+  height: 700px;
+  margin-left: 0;
+}
+
+#momContainer img {
+  width: 300px;
+  height: auto;
+}
