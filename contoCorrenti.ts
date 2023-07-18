@@ -3,14 +3,14 @@ class MotherAccount {
     withdrawn: number;
     deposited: number;
     total: number;
-    history: number[];
+    history: number[]; //QUESTo E' L'ARRAY PER LA HISTORY DELLE DIVERESE TRANSIZIONI
   
     constructor(current: number, taken: number = 0, put: number = 0) {
       this.account = current;
       this.withdrawn = taken;
       this.deposited = put;
   
-      this.total = current - taken + put;
+      this.total = current - taken + put; //QUESTO CALCOLA IL CONTO CORRENTE RISPETTO A TAKEN E PRESO
       this.history = [this.total];
     }
   
@@ -27,7 +27,7 @@ class MotherAccount {
     }
   }
   
-  const mother = new MotherAccount(0, 0, 0);
+  const mother = new MotherAccount(0); // QUESTO FA PARTIRE L'ACCOUNT DI MAMMA DA 0
   mother.showAccountDetails();
   
   // Retrieve the HTML elements
@@ -66,6 +66,8 @@ class MotherAccount {
     });
   }
   
+
+  // --------------------- THIS FUNCTION ADDS THE NEW TOTAL TO ACCOUNT HISTORY IN THE HTML AND SHOWS RED (NEGATIVE) or GREEN (POSITIVE) BALANCE
   function updateAccountBalance() {
     let momAccountHistory = document.getElementById("momAccountHistory");
   

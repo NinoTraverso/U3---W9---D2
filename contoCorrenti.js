@@ -4,7 +4,7 @@ class MotherAccount {
         this.account = current;
         this.withdrawn = taken;
         this.deposited = put;
-        this.total = current - taken + put;
+        this.total = current - taken + put; //QUESTO CALCOLA IL CONTO CORRENTE RISPETTO A TAKEN E PRESO
         this.history = [this.total];
     }
     showAccountDetails() {
@@ -19,7 +19,7 @@ class MotherAccount {
         }
     }
 }
-const mother = new MotherAccount(0, 0, 0);
+const mother = new MotherAccount(0); // QUESTO FA PARTIRE L'ACCOUNT DI MAMMA DA 0
 mother.showAccountDetails();
 // Retrieve the HTML elements
 const addAmountInput = document.getElementById("addAmount");
@@ -55,6 +55,7 @@ if (removeButton !== null) {
         removeAmountInput.value = "";
     });
 }
+// --------------------- THIS FUNCTION ADDS THE NEW TOTAL TO ACCOUNT HISTORY IN THE HTML AND SHOWS RED (NEGATIVE) or GREEN (POSITIVE) BALANCE
 function updateAccountBalance() {
     let momAccountHistory = document.getElementById("momAccountHistory");
     if (momAccountHistory !== null) {
