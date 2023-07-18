@@ -16,7 +16,7 @@
     <h1 class="text-center">Mom's National Bank</h1>
     <div class="container">
       <div class="row">
-        <div class="col col-4">
+        <div class="col col-2">
           <div
             id="momContainer"
             class="d-flex flex-colum justify-content-start"
@@ -24,17 +24,69 @@
             <img src="./Assets/mom.png" alt="momFuturama" />
           </div>
         </div>
-        <div class="col col-4 pt-5">
+        <div class="col col-5 pt-5">
           <h3 class="d-inline-block text-secondary bg-danger-subtle px-3">
             Mom
           </h3>
-          <div id="momAccountHistory" class="bg-info" ><h4>Account history:</h4></div>
+          <div id="addRemoveButton" class="d-flex flex-column">
+            <label for="addAmount">Add Amount:</label>
+            <input
+              class="text-success"
+              type="number"
+              id="addAmount"
+              placeholder="+"
+            />
+
+            <button id="addButton">Add</button>
+
+            <label for="removeAmount">Remove Amount:</label>
+            <input
+              class="text-danger"
+              type="number"
+              id="removeAmount"
+              placeholder="-"
+            />
+
+            <button id="removeButton" class="mb-3">Remove</button>
+
+            <div id="accountBalance"></div>
+          </div>
+          <div class="bg-info">
+            <h4>Account history:</h4>
+            <div id="momAccountHistory"></div>
+          </div>
         </div>
-        <div class="col col-4 pt-5">
+        <div class="col col-5 pt-5">
           <h3 class="d-inline-block text-secondary bg-danger-subtle px-3">
             Walt, Larry, and Igner
           </h3>
-          <div class="bg-info" id="waltLarryIgnerAccountHistory"><h4>Account history:</h4></div>
+          <div id="addRemoveButton2" class="d-flex flex-column">
+            <label for="addAmount">Add Amount:</label>
+            <input
+              class="text-success"
+              type="number"
+              id="addAmount2"
+              placeholder="+"
+            />
+
+            <button id="addButton2">Add</button>
+
+            <label for="removeAmount">Remove Amount:</label>
+            <input
+              class="text-danger"
+              type="number"
+              id="removeAmount"
+              placeholder="-"
+            />
+
+            <button id="removeButton" class="mb-3">Remove</button>
+
+            <div id="accountBalance2"></div>
+          </div>
+          <div class="bg-info">
+            <h4>Account history:</h4>
+            <div id="momAccountHistory2"></div>
+          </div>
         </div>
       </div>
     </div>
