@@ -1,23 +1,23 @@
 "use strict";
 class MotherAccount {
-    constructor(current, taken = 0, put = 0) {
-        this.account = current;
-        this.withdrawn = taken;
-        this.deposited = put;
-        this.total = current - taken + put; //QUESTO CALCOLA IL CONTO CORRENTE RISPETTO A TAKEN E PRESO
-        this.history = [this.total];
+  constructor(current, taken = 0, put = 0) {
+    this.account = current;
+    this.withdrawn = taken;
+    this.deposited = put;
+    this.total = current - taken + put; //QUESTO CALCOLA IL CONTO CORRENTE RISPETTO A TAKEN E PRESO
+    this.history = [this.total];
+  }
+  showAccountDetails() {
+    let momBalance = document.getElementById("momAccountHistory");
+    if (momBalance !== null) {
+      momBalance.innerHTML = "";
+      this.history.forEach((transaction) => {
+        const transactionElement = document.createElement("div");
+        transactionElement.textContent = String(transaction);
+        momBalance.prepend(transactionElement); //QUESTO VA A METTERE IL PREVIOUS AMMONTO SOPRA L'AMMONTO "FINALE"
+      });
     }
-    showAccountDetails() {
-        let momBalance = document.getElementById("momAccountHistory");
-        if (momBalance !== null) {
-            momBalance.innerHTML = "";
-            this.history.forEach((transaction) => {
-                const transactionElement = document.createElement("div");
-                transactionElement.textContent = String(transaction);
-                momBalance.prepend(transactionElement);
-            });
-        }
-    }
+  }
 }
 const mother = new MotherAccount(0); // QUESTO FA PARTIRE L'ACCOUNT DI MAMMA DA 0
 mother.showAccountDetails();
@@ -28,46 +28,45 @@ const removeAmountInput = document.getElementById("removeAmount");
 const removeButton = document.getElementById("removeButton");
 //------------------------------------------------------------------------- THIS IS THE ADD BUTTON FUNCTION
 if (addButton !== null) {
-    addButton.addEventListener("click", () => {
-        const amount = parseFloat(addAmountInput.value);
-        if (!isNaN(amount)) {
-            const increasedAmount = amount * 1.1;
-            mother.deposited += increasedAmount;
-            mother.total = mother.account - mother.withdrawn + mother.deposited;
-            mother.history.unshift(mother.total);
-            updateAccountBalance();
-            mother.showAccountDetails();
-        }
-        addAmountInput.value = "";
-    });
+  addButton.addEventListener("click", () => {
+    const amount = parseFloat(addAmountInput.value);
+    if (!isNaN(amount)) {
+      const increasedAmount = amount * 1.1;
+      mother.deposited += increasedAmount;
+      mother.total = mother.account - mother.withdrawn + mother.deposited;
+      mother.history.unshift(mother.total);
+      updateAccountBalance();
+      mother.showAccountDetails();
+    }
+    addAmountInput.value = "";
+  });
 }
 // --------------------------------------------------------------------- THIS IS THE REMOVE BUTTON FUNCTION
 if (removeButton !== null) {
-    removeButton.addEventListener("click", () => {
-        const amount = parseFloat(removeAmountInput.value);
-        if (!isNaN(amount)) {
-            mother.withdrawn += amount;
-            mother.total = mother.account - mother.withdrawn + mother.deposited;
-            mother.history.unshift(mother.total);
-            updateAccountBalance();
-            mother.showAccountDetails();
-        }
-        removeAmountInput.value = "";
-    });
+  removeButton.addEventListener("click", () => {
+    const amount = parseFloat(removeAmountInput.value);
+    if (!isNaN(amount)) {
+      mother.withdrawn += amount;
+      mother.total = mother.account - mother.withdrawn + mother.deposited;
+      mother.history.unshift(mother.total);
+      updateAccountBalance();
+      mother.showAccountDetails();
+    }
+    removeAmountInput.value = "";
+  });
 }
 // --------------------- THIS FUNCTION ADDS THE NEW TOTAL TO ACCOUNT HISTORY IN THE HTML AND SHOWS RED (NEGATIVE) or GREEN (POSITIVE) BALANCE
 function updateAccountBalance() {
-    let momAccountHistory = document.getElementById("momAccountHistory");
-    if (momAccountHistory !== null) {
-        if (mother.total > 0) {
-            momAccountHistory.textContent = `Account Balance: ${mother.total}`;
-            momAccountHistory.className = "text-success";
-        }
-        else if (mother.total <= 0) {
-            momAccountHistory.textContent = `Account Balance: ${mother.total}`;
-            momAccountHistory.className = "text-danger";
-        }
+  let momAccountHistory = document.getElementById("momAccountHistory");
+  if (momAccountHistory !== null) {
+    if (mother.total > 0) {
+      momAccountHistory.textContent = `Account Balance: ${mother.total}`;
+      momAccountHistory.className = "text-success";
+    } else if (mother.total <= 0) {
+      momAccountHistory.textContent = `Account Balance: ${mother.total}`;
+      momAccountHistory.className = "text-danger";
     }
+  }
 }
 /* ----------------------------------------------------------- SON ACCOUNT -------------------------------------------------- */
 /* ----------------------------------------------------------- SON ACCOUNT -------------------------------------------------- */
